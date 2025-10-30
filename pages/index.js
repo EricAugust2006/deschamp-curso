@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
 
 function Home() {
-  <h1>Olá, Pessoal!</h1>
+  <h1>Voltando ao padrão</h1>
 }
 
 export default Home;
