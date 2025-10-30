@@ -1,6 +1,6 @@
 
 function Home() {
-  <h1>Voltando ao padrão</h1>
+  return <h1>Dá uma risadinha</h1>
 }
 
 export default Home;
