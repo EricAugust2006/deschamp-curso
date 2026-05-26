@@ -15,8 +15,18 @@ async function query(queryObject) {
 }
 
 function getSSLValues() {
-  return process.env.NODE_ENV === "production" ? false : true;
+  if (process.env.POSTGRES_SSL === "true") {
+    return { rejectUnauthorized: false };
+  }
+  return false;
 }
+
+// function getSSLValues() {
+//   if (process.env.NODE_ENV === "production") {
+//     return { rejectUnauthorized: false };
+//   }
+//   return false;
+// }
 
 async function getNewClient() {
   const client = new Client({
