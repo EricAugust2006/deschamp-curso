@@ -5,7 +5,7 @@ export default async function status(request, response) {
 
   const databaseVersionResult = await database.query("SHOW server_version;");
   const databaseVersionValue =
-    databaseVersionResult.rows[0].server_version.split(" ")[0]; // "16.12 (761f46d)" → "16.12"
+    databaseVersionResult.rows[0].server_version.split(" ")[0];
 
     
   const databaseMaxConnectionResults = await database.query(
