@@ -10,7 +10,7 @@ async function query(queryObject) {
     console.error(error);
     throw error;
   } finally {
-    await client.end();
+    await client?.end();
   }
 }
 
@@ -18,15 +18,13 @@ function getSSLValues() {
   if (process.env.POSTGRES_SSL === "true") {
     return { rejectUnauthorized: false };
   }
+
+  if (process.env.NODE_ENV === "production") {
+    return { rejectUnauthorized: false };
+  }
+
   return false;
 }
-
-// function getSSLValues() {
-//   if (process.env.NODE_ENV === "production") {
-//     return { rejectUnauthorized: false };
-//   }
-//   return false;
-// }
 
 async function getNewClient() {
   const client = new Client({
